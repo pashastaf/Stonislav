@@ -1,0 +1,99 @@
+﻿<Window x:Class="Stonislav.Windows.AddProductWIndow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stonislav.Windows"
+        mc:Ignorable="d"
+        Title="AddProductWindow" Height="660" Width="350"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border CornerRadius="30"
+            BorderThickness="3"
+            Background="{StaticResource BackColor}">
+        <Grid>
+            <!--ProductData-->
+            <StackPanel>
+                <TextBlock Text="Product"
+                           FontSize="28"
+                           FontWeight="Medium"
+                           FontFamily="Arial"
+                           Margin="0 20 0 0"
+                           HorizontalAlignment="Center"
+                           Foreground="{StaticResource BackTextColor}"/>
+                <StackPanel HorizontalAlignment="Center" Margin="0 20 0 20">
+                    <Border BorderBrush="{StaticResource BackColor}"
+                            BorderThickness="1"
+                            Width="150"
+                            Height="200">
+                        <Image x:Name="ImgImageProduct"/>
+                    </Border>
+                    <Button x:Name="BtnImageSearch" 
+                            Style="{StaticResource secondaryButton}"
+                            Background="Transparent"
+                            Content="Select an image"
+                            FontSize="20"
+                            HorizontalAlignment="Center"
+                            Margin="0 10 0 0" 
+                            Click ="BtnImageSearch_Click"
+                            />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Margin="0 0 0 0">
+                    <TextBox x:Name="TbTitle"
+                             Style="{StaticResource TB}" 
+                             Tag="Title" 
+                             Foreground="{StaticResource text}"
+                             FontSize="16"     
+                             HorizontalAlignment="Left"
+                             Width="200"
+                             Height="40"
+                             />
+                    <TextBox x:Name="TbPrice"
+                             Style="{StaticResource TB}" 
+                             Tag="Price" 
+                             Foreground="{StaticResource text}"
+                             FontSize="16"     
+                             HorizontalAlignment="Left"
+                             Margin="0 20 0 0"
+                             Width="200"
+                             Height="40"
+                             />
+                    <TextBox x:Name="TbInStock"
+                             Style="{StaticResource TB}" 
+                             Tag="In Stock" 
+                             Foreground="{StaticResource text}"
+                             FontSize="16"     
+                             HorizontalAlignment="Left"
+                             Width="200"
+                             Margin="0 20 0 0"
+                             Height="40"
+                             />
+                </StackPanel>
+
+                <!--ButtonsAction-->
+
+                <Button x:Name="BtnAddProduct" 
+                    Style="{StaticResource activeButton}"
+                    Content="Save"
+                    Foreground="{StaticResource AlterBackColor}"
+                    FontSize="18"                    
+                    Margin="0 40 0 10" 
+                    Click ="BtnAddProduct_Click"
+                    />
+                <Button x:Name="BtnCancel"
+                    Style="{StaticResource secondaryButton}"
+                    Background="Transparent"
+                    Content="Отмена"
+                    FontSize="14"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 10"
+                    Click="BtnCancel_Click"
+                    />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

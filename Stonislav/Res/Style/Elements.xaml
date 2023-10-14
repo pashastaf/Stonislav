@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="TB" TargetType="TextBox">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource text}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="1" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                        <TextBox Text="{Binding Path=Text,
+                                            RelativeSource={RelativeSource TemplatedParent},
+                                            Mode=TwoWay,
+                                            UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource"
+                                 Background="Transparent"
+                                 Panel.ZIndex="2" 
+                                 BorderThickness="0 0 0 0"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                 Padding="{TemplateBinding Padding}"
+                                 />
+                        <TextBox Text="{TemplateBinding Tag}" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="1"
+                                 BorderThickness="0 0 0 0"
+                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                 Padding="{TemplateBinding Padding}"
+                                 >
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="Foreground" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                            <Setter Property="Foreground" Value="#72000000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=Text, ElementName=textSource}" Value="{x:Null}">
+                            <Setter TargetName="textSource" Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
